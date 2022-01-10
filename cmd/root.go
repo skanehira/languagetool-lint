@@ -8,7 +8,7 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use: "go-cli-template",
+	Use: "languagetool-lint",
 }
 
 func exitError(msg interface{}) {

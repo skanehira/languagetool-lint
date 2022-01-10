@@ -1,11 +1,11 @@
-![GitHub Repo stars](https://img.shields.io/github/stars/skanehira/go-cli-template?style=social)
-![GitHub](https://img.shields.io/github/license/skanehira/go-cli-template)
-![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/skanehira/go-cli-template)
-![GitHub all releases](https://img.shields.io/github/downloads/skanehira/go-cli-template/total)
-![GitHub CI Status](https://img.shields.io/github/workflow/status/skanehira/go-cli-template/ci?label=CI)
-![GitHub Release Status](https://img.shields.io/github/workflow/status/skanehira/go-cli-template/Release?label=release)
+![GitHub Repo stars](https://img.shields.io/github/stars/skanehira/languagetool-lint?style=social)
+![GitHub](https://img.shields.io/github/license/skanehira/languagetool-lint)
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/skanehira/languagetool-lint)
+![GitHub all releases](https://img.shields.io/github/downloads/skanehira/languagetool-lint/total)
+![GitHub CI Status](https://img.shields.io/github/workflow/status/skanehira/languagetool-lint/ci?label=CI)
+![GitHub Release Status](https://img.shields.io/github/workflow/status/skanehira/languagetool-lint/Release?label=release)
 
-# go-cli-template
+# languagetool-lint
 This is template that help you to quick implement some CLI using Go.
 
 This repository is contains following.
