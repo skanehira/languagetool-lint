@@ -10,10 +10,16 @@ Lint tool for [languagetool](https://github.com/languagetool-org/languagetool).
 
 ## Requirements
 [languagetool](https://github.com/languagetool-org/languagetool).
-NOTE: You can also use [docker-languagetool](https://github.com/Erikvl87/docker-languagetool) to run `languagetool server`.
+
+## Installation
+
+```sh
+$ go install github.com/skanehira/languagetool-lint@latest
+```
 
 ## Use as a lint tool
 1. Run your `languagetool server` in local.
+   NOTE: You can also use [docker-languagetool](https://github.com/Erikvl87/docker-languagetool) to run `languagetool server`.
 2. Execute `languagetool-lint` like bellow.
    ```sh
    $ languagetool-lint -a http://localhost:8081 -l "en-US" your_text_file
@@ -35,6 +41,18 @@ NOTE: You can also use [docker-languagetool](https://github.com/Erikvl87/docker-
    languages:
      markdown:
        - <<: *languagetool-lint
+   ```
+3. Add your LSP client settings.
+   e.g. coc.nvim
+   ```
+   call coc#config('languageserver', {
+         \ 'efm': {
+           \ 'command': 'efm-langserver',
+           \ 'args': [],
+           \ 'trace.server': 'verbose',
+           \ 'filetypes': ['markdown']
+           \ }
+         \})
    ```
 
 ## Author
