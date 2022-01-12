@@ -6,10 +6,10 @@
 ![GitHub Release Status](https://img.shields.io/github/workflow/status/skanehira/languagetool-lint/Release?label=release)
 
 # languagetool-lint
-Lint tool for [languagetool](https://github.com/languagetool-org/languagetool).
+Lint CLI for [languagetool](https://github.com/languagetool-org/languagetool).
 
 ## Requirements
-[languagetool](https://github.com/languagetool-org/languagetool).
+- [languagetool](https://github.com/languagetool-org/languagetool).
 
 ## Installation
 
@@ -18,7 +18,7 @@ $ go install github.com/skanehira/languagetool-lint@latest
 ```
 
 ## Use as a lint tool
-1. Run your `languagetool server` in local.
+1. Run your `languagetool server` in local.  
    NOTE: You can also use [docker-languagetool](https://github.com/Erikvl87/docker-languagetool) to run `languagetool server`.
 2. Execute `languagetool-lint` like bellow.
    ```sh
@@ -42,7 +42,7 @@ $ go install github.com/skanehira/languagetool-lint@latest
      markdown:
        - <<: *languagetool-lint
    ```
-3. Add your LSP client settings.
+3. Add your LSP client settings.  
    e.g. coc.nvim
    ```
    call coc#config('languageserver', {
