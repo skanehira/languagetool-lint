@@ -13,18 +13,18 @@ var (
 )
 
 func getVersion() string {
-		return fmt.Sprintf(`Version: %s
+	return fmt.Sprintf(`Version: %s
 Revision: %s
 OS: %s
-Arch: %s
-`, Version, Revision, runtime.GOOS, runtime.GOARCH)
+Arch: %s`, Version, Revision, runtime.GOOS, runtime.GOARCH)
 }
 
 var versionCmd = &cobra.Command{
-	Use: "Version",
+	Use: "version",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(getVersion())
 	},
+	Short: "Show version info",
 }
 
 func init() {
