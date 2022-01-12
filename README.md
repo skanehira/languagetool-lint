@@ -31,7 +31,7 @@ $ go install github.com/skanehira/languagetool-lint@latest
    stdin:1:0: This sentence does not start with an uppercase letter.
    ```
 
-## Use as a LSP Server
+## Use as a Language Server
 1. Install [efm-langserver](https://github.com/mattn/efm-langserver)
 2. Add config as bellow.
    ```yaml
@@ -47,7 +47,7 @@ $ go install github.com/skanehira/languagetool-lint@latest
      markdown:
        - <<: *languagetool-lint
    ```
-3. Add your LSP client settings.  
+3. Add your Language Client settings.  
    e.g. coc.nvim
    ```
    call coc#config('languageserver', {
