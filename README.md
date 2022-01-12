@@ -19,9 +19,16 @@ $ go install github.com/skanehira/languagetool-lint@latest
 
 ## Use as a lint tool
 1. Run your `languagetool server` in local.  
-   NOTE: You can also use [docker-languagetool](https://github.com/Erikvl87/docker-languagetool) to run `languagetool server`.
+   NOTE: You can use [docker-languagetool](https://github.com/Erikvl87/docker-languagetool) to run `languagetool server`.
+   ```sh
+   $ docker run -d -p 8010:8010 erikvl87/languagetool
+   ```
 2. Execute `languagetool-lint` like bellow.
    ```sh
+   $ cat your_text_file
+   When you type |:write|, then it would be executed in terminal, and
+   you can choose any options(e.g add labels).
+
    $ languagetool-lint -a http://localhost:8081 -l "en-US" your_text_file
    your_text_file:2:27: The abbreviation “e.g.” (= for example) requires two periods.
    ```
