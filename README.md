@@ -25,6 +25,11 @@ $ go install github.com/skanehira/languagetool-lint@latest
    $ languagetool-lint -a http://localhost:8081 -l "en-US" your_text_file
    your_text_file:2:27: The abbreviation “e.g.” (= for example) requires two periods.
    ```
+3. You can also use from stdin.
+   ```sh
+   $ echo "this is a pen." | languagetool-lint
+   stdin:1:0: This sentence does not start with an uppercase letter.
+   ```
 
 ## Use as a LSP Server
 1. Install [efm-langserver](https://github.com/mattn/efm-langserver)
