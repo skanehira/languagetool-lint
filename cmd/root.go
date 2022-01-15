@@ -82,7 +82,7 @@ func getpos(lines map[string]Line, word string) [][]int {
 }
 
 // format is format languagetool response to lint format
-func format(fname string, lines map[string]Line, resp Response) ([]string, error) {
+func format(fname string, lines map[string]Line, resp Response) []string {
 	errors := []string{}
 	for _, m := range resp.Matches {
 		word := m.Context.Text[m.Context.Offset : m.Context.Offset+m.Context.Length]
@@ -95,7 +95,7 @@ func format(fname string, lines map[string]Line, resp Response) ([]string, error
 			errors = append(errors, fmt.Sprintf("%s:%d:%d: %s", fname, l[0], l[1], m.Message))
 		}
 	}
-	return errors, nil
+	return errors
 }
 
 func Execute() {
@@ -164,10 +164,8 @@ func Execute() {
 		if err := json.NewDecoder(resp.Body).Decode(&langResp); err != nil {
 			exitError(err)
 		}
-		result, err := format(fname, lines, langResp)
-		if err != nil {
-			exitError(err)
-		}
+
+		result := format(fname, lines, langResp)
 		for _, l := range result {
 			println(l)
 		}
