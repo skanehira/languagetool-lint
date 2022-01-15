@@ -56,7 +56,7 @@ $ go install github.com/skanehira/languagetool-lint@latest
    ```
 3. Add your Language Client settings.  
    e.g. coc.nvim
-   ```
+   ```vim
    call coc#config('languageserver', {
          \ 'efm': {
            \ 'command': 'efm-langserver',
