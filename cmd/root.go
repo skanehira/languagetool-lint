@@ -67,30 +67,33 @@ type Line struct {
 	Num  int64
 }
 
-func getpos(lines map[string]Line, c Context) (int64, int, error) {
-	word := c.Text[c.Offset : c.Offset+c.Length]
-	var lnum int64
-	var col int
+var skipWords = map[string]struct{}{}
+
+func getpos(lines map[string]Line, word string) [][]int {
+	lnumCol := [][]int{}
+	// Found word from all lines.
 	for text, line := range lines {
 		if strings.Contains(text, word) {
-			lnum = line.Num
-			col = strings.Index(line.Text, word)
-			break
+			col := strings.Index(line.Text, word)
+			lnumCol = append(lnumCol, []int{int(line.Num), col})
 		}
 	}
-	return lnum, col, nil
+	return lnumCol
 }
 
 // format is format languagetool response to lint format
-// TODO improve algrithm for search word from sentences
 func format(fname string, lines map[string]Line, resp Response) ([]string, error) {
-	errors := make([]string, len(resp.Matches))
-	for i, m := range resp.Matches {
-		lnum, col, err := getpos(lines, m.Context)
-		if err != nil {
-			return nil, err
+	errors := []string{}
+	for _, m := range resp.Matches {
+		word := m.Context.Text[m.Context.Offset : m.Context.Offset+m.Context.Length]
+		if _, skip := skipWords[word]; skip {
+			continue
 		}
-		errors[i] = fmt.Sprintf("%s:%d:%d: %s", fname, lnum, col, m.Message)
+		skipWords[word] = struct{}{}
+		lumCol := getpos(lines, word)
+		for _, l := range lumCol {
+			errors = append(errors, fmt.Sprintf("%s:%d:%d: %s", fname, l[0], l[1], m.Message))
+		}
 	}
 	return errors, nil
 }
@@ -122,11 +125,12 @@ func Execute() {
 			sc = bufio.NewScanner(os.Stdin)
 		} else {
 			fname = args[0]
-			fr, err := os.Open(fname)
+			f, err := os.Open(fname)
 			if err != nil {
 				exitError(err)
 			}
-			sc = bufio.NewScanner(fr)
+			defer f.Close()
+			sc = bufio.NewScanner(f)
 		}
 		var lnum int64 = 1
 		lines := make(map[string]Line)
