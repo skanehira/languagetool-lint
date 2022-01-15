@@ -8,6 +8,8 @@
 # languagetool-lint
 Lint CLI for [languagetool](https://github.com/languagetool-org/languagetool).
 
+![](https://i.gyazo.com/a27405b2d85b5b44e57fd505e2b43333.gif)
+
 ## Requirements
 - [languagetool](https://github.com/languagetool-org/languagetool).
 
