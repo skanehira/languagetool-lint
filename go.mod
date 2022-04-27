@@ -3,7 +3,7 @@ module github.com/skanehira/languagetool-lint
 go 1.17
 
 require (
-	github.com/google/go-cmp v0.5.7
+	github.com/google/go-cmp v0.5.8
 	github.com/spf13/cobra v1.3.0
 )
 
